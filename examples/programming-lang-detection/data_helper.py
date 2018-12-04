@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import codecs
 import defs
@@ -21,14 +22,14 @@ def get_input_and_labels(root_folder=train_root_folder, file_vector_size=10 * 10
   Y = []
   langs = defs.langs
   n_classes = len(langs)
-  print n_classes
+  print(n_classes)
   X = []
   Z = []
   i = 0
   for fld in langs:
     vect = [0 for x in range(0, n_classes)]
     vect[i] = 1
-    print fld
+    print(fld)
     folder = os.path.join(root_folder, fld)
     n = 0
     for fn in os.listdir(folder):
@@ -43,7 +44,7 @@ def get_input_and_labels(root_folder=train_root_folder, file_vector_size=10 * 10
           Z.append(file_name)
         n += 1
       except Exception as e:
-        print e
+        print(e)
     i += 1
 
   return np.array(X), np.array(Y), Z
@@ -59,13 +60,13 @@ def get_text_and_labels(root_folder=train_root_folder, max_files=1000, breakup=F
   Y = []
   langs = defs.langs
   n_classes = len(langs)
-  print n_classes
+  print(n_classes)
   X = []
   i = 0
   for fld in langs:
     vect = [0 for x in range(0, n_classes)]
     vect[i] = 1
-    print fld
+    print(fld)
     folder = os.path.join(root_folder, fld)
     n = 0
     for fn in os.listdir(folder):
@@ -79,14 +80,16 @@ def get_text_and_labels(root_folder=train_root_folder, max_files=1000, breakup=F
           Y.append(vect)
         n += 1
       except Exception as e:
-        print e
+        print(e)
     i += 1
 
   return np.array(X), np.array(Y)
 
+
 def turn_url_to_vector(f_url, file_vector_size=10 * 1024, normalise_whitespace=True):
   r = requests.get(f_url)
   return turn_text_to_vector(r.text, file_vector_size, normalise_whitespace)
+
 
 def turn_text_to_vector(text, file_vector_size=10 * 1024, normalise_whitespace=True):
   """
@@ -114,6 +117,7 @@ def turn_text_to_vector(text, file_vector_size=10 * 1024, normalise_whitespace=T
       file_vector.append(defs.pad_vector)
 
   return np.array(file_vector)
+
 
 def get_text_or_snippets(file_name, breakup=False):
   """

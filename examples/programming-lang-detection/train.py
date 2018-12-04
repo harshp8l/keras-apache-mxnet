@@ -1,10 +1,10 @@
+from __future__ import print_function
 import numpy as np
 import data_helper
 from keras.models import Sequential, Model
 from keras.layers import Activation, Dense, Dropout, Flatten, Input, Conv1D, MaxPooling1D
 from keras.layers.merge import Concatenate
 import defs
-
 
 np.random.seed(2)
 
@@ -76,4 +76,4 @@ model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['a
 model.fit(x_shuffled, y_shuffled, batch_size=batch_size,
           epochs=num_epochs, validation_split=val_split, verbose=1)
 
-model.save('save_tmp.h5')
+model.save('lang_detection_model.h5')
