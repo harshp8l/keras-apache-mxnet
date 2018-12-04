@@ -74,3 +74,7 @@ cpp:    495/501 (0.988023952096)
 ### References
 This work was orginally based of the work from this [repo](https://github.com/aliostad/deep-learning-lang-detection).
 Approach for DL has been based on Zhang and LeCun's 2016 [paper](https://arxiv.org/pdf/1502.01710.pdf) "Text Understanding from Scratch". The main technique is that instead of using word2vec to create word embedding, characters are quantised (turned to one-hot-vector) and then the document is represented by a sequence of quantised characters (vectors). Currently the document is truncated at 2KB and smaller docs are padded by all zero vectors. 
+
+### Applications
+This model is currently being applied and used by the mxnet-label-bot. This bot is being currently being maintained on this
+repository: [label bot repo](https://github.com/MXNetEdge/mxnet-infrastructure)
