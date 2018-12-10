@@ -13,6 +13,7 @@ supported_chars = "abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'/\|_@#$%^&*~`+-=<
 supported_chars_map = {} # pre-calculated vectors
 pad_vector = [0 for x in supported_chars]
 
+
 def _setup():
   i = 0
   for ch in supported_chars:
@@ -21,7 +22,9 @@ def _setup():
     supported_chars_map[ch] = vec
     i += 1
 
+
 _setup()
+
 
 def get_lang_for_vector(one_hot_vector):
   for i in range(0, len(one_hot_vector)):

@@ -28,7 +28,7 @@ num_epochs = 20
 val_split = 0.1
 
 
-# Data Preparatopn
+# Data Preparation
 # ==================================================
 #
 # Load data

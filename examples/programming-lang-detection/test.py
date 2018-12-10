@@ -5,8 +5,8 @@ import sys
 import numpy as np
 import defs
 
-print ('usage: test.py <filename>')
 if len(sys.argv) < 2:
+  print ('usage: test.py <filename>')
   exit(0)
 
 file_name = sys.argv[1]

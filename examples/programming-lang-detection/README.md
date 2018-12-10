@@ -9,13 +9,14 @@ The script is able to take in a file name and detect the kind of programming lan
 offers >90% accuracy for languages which we currently support of the file which is provided.
 ## Usage ##
 
+You will need to have Keras-MXNet. 
+
 Run:
-
 ```
-python2.7 test.py <filename>
+python test.py <filename>
 ```
 
-You can download a pre-trained model from [here](). This model was trained on an AWS p3.16 instance and it took under 30 minutes to train.
+You can download a pre-trained model from [here](https://s3-us-west-2.amazonaws.com/email-boy-images/LabelBotModelFiles/lang_detection_model.h5). This model was trained on an AWS p3.16 instance and it took under 30 minutes to train.
 
 ## Purpose
 The project is set up to demonstrate - in simple steps - how to use Keras to build a Deep Learning (DL) model to reconise programming language of a code file or snippet. This can be used to detect language of code snippets and has been trained for it by splitting the files into snippets.  
@@ -24,10 +25,11 @@ The project is set up to demonstrate - in simple steps - how to use Keras to bui
 Small dataset is the main limitation of the project - for a powerful model, you would need at least x10 or x100 samples. Another problem is that the training has been done on full files (and their snippets) and not on snippets. 
 
 ## Languages
-5 languages were chosen as below:
-Clojure, Java, Scala, Python, C++
+5 languages were chosen: Clojure, Java, Scala, Python, C++
+
 
 ## Data
+Original Data Source: [data](https://github.com/aliostad/deep-learning-lang-detection/tree/master/data)
 All the data was extracted from Github using its search feature. Common inert words used for search where the word is not a keyword in a language. The words used are:
 
 > load, dump, write, stream, api, manage, broker, save, process, service
@@ -38,7 +40,7 @@ controller, locator, customer, view, model, nav, show, new, old, legacy
 Data are separated into training (~2000 per language) and test (~1000 per language). In the new version, in order to train for snippets, larger files are broken down and the second and last third of the file are used in the training data. 
 
 ## Run the code
-You need Keras-MXNet. The code is in python 2.7.
+Dependencies You need Keras-MXNet.
 
 ### Training
 
@@ -59,12 +61,13 @@ python test_run.py
 This tests all files in the test folder and output looks like below:
 
 ```
-Final result: 7949/8016 (0.991641716567)
+Final result: 2487/2505 (0.9928143712574851)
 clojure - Precision:0.995991983968 Recall: 0.992015968064
 java - Precision:0.990118577075 Recall: 1.0
 scala - Precision:0.99001996008 Recall: 0.99001996008
 python - Precision:0.976470588235 Recall: 0.994011976048
-css - Precision:0.994011976048 Recall: 0.994011976048
+cpp - Precision:0.993975903614 Recall: 0.988023952096
+clojure:    497/501 (0.992015968064)
 java:   501/501 (1.0)
 scala:    496/501 (0.99001996008)
 python:   498/501 (0.994011976048)
